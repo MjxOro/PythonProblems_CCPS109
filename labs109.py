@@ -158,6 +158,26 @@ def extract_increasing(digits):
 
     return result
 
+def words_with_letters(words, letters):
+    # check empty letters
+    if not letters:
+        return words
+
+    result = []
+
+    for word in words:
+        # check if letters is a subsequence of word
+        letterIndex = 0
+        for char in word:
+            if char == letters[letterIndex]:
+                letterIndex += 1
+                if letterIndex == len(letters):
+                    # found all letters as subsequence
+                    result.append(word)
+                    break
+
+    return result
+
 
 
 
