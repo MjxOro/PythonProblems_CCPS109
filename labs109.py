@@ -122,6 +122,23 @@ def colour_trio(colours):
 
     return current_row
 
+def count_dominators(items):
+    # check empty list
+    if not items:
+        return 0
+
+    # start from right to avoid nested loops
+    count = 1  # last element always dominator
+    maxFromRight = items[len(items) - 1]
+
+    # loop backwards from second-to-last
+    for i in range(len(items) - 2, -1, -1):
+        if items[i] > maxFromRight:
+            count += 1
+            maxFromRight = items[i]
+
+    return count
+
 
 
 
