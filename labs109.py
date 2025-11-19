@@ -93,6 +93,35 @@ def domino_cycle(tiles):
 
     return True
 
+def colour_trio(colours):
+    # Check single color case
+    if len(colours) == 1:
+        return colours
+
+    # Keep reducing rows until we have one color left
+    current_row = colours
+    while len(current_row) > 1:
+        next_row = ''
+        for i in range(len(current_row) - 1):
+            # Mix colors at position i and i+1
+            c1 = current_row[i]
+            c2 = current_row[i + 1]
+            # If same color, result is that color
+            if c1 == c2:
+                next_row += c1
+            else:
+                # Different colors give the third color
+                # Use if/else to figure out which third color
+                if (c1 == 'r' and c2 == 'y') or (c1 == 'y' and c2 == 'r'):
+                    next_row += 'b'
+                elif (c1 == 'r' and c2 == 'b') or (c1 == 'b' and c2 == 'r'):
+                    next_row += 'y'
+                else:  # (c1 == 'y' and c2 == 'b') or (c1 == 'b' and c2 == 'y')
+                    next_row += 'r'
+        current_row = next_row
+
+    return current_row
+
 
 
 
