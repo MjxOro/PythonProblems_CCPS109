@@ -139,6 +139,25 @@ def count_dominators(items):
 
     return count
 
+def extract_increasing(digits):
+    # check empty string
+    if not digits:
+        return []
+
+    result = []
+    previous = -1
+    current = 0
+
+    # build numbers by adding digits until larger than previous
+    for d in digits:
+        current = 10 * current + int(d)
+        if current > previous:
+            result.append(current)
+            previous = current
+            current = 0
+
+    return result
+
 
 
 
