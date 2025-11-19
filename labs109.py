@@ -46,7 +46,7 @@ def is_cyclops(n):
     # check 0
     if (n == 0):
         return True
-    
+
     # Loop the digits.
     # figure out where 0s are in the digits
     # figure out if number of digits are odd
@@ -75,6 +75,23 @@ def is_cyclops(n):
         return True
     else:
         return False
+
+def domino_cycle(tiles):
+    # Check empty list case
+    if not tiles:
+        return True
+
+    # Check if each tile's end matches the next tile's start
+    for i in range(len(tiles)):
+        # Get current tile's end value
+        current_end = tiles[i][1]
+        # Get next tile's start value (wrap around for last tile)
+        next_start = tiles[(i + 1) % len(tiles)][0]
+        # If they don't match, not a cycle
+        if current_end != next_start:
+            return False
+
+    return True
 
 
 
