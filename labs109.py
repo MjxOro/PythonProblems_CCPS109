@@ -451,6 +451,25 @@ def tukeys_ninthers(items):
 
     return current[0]
 
+def collect_numbers(perm):
+
+    # build inverse permutation
+    inv = []
+    for i in range(len(perm)):
+        inv.append(0)
+
+    for i in range(len(perm)):
+        inv[perm[i]] = i
+
+    rounds = 1
+
+    # check when we need new rounds
+    for i in range(1, len(perm)):
+        if inv[i] < inv[i - 1]:
+            rounds += 1
+
+    return rounds
+
 
 
 
