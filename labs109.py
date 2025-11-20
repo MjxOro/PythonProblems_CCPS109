@@ -248,6 +248,30 @@ def winning_card(cards, trump=None):
             winner = card
     return winner
 
+def seven_zero(n):
+
+    # if n not divisible by 2 or 5, only need sevens
+    if n % 2 != 0 and n % 5 != 0:
+        num = 0
+        for i in range(1, n + 1):
+            num = num * 10 + 7
+            if num % n == 0:
+                return num
+
+    # general case: try all combos of sevens and zeros
+
+    for d in range(1, 100000):
+        for k in range(1, d + 1):
+            num = 0
+            # add k sevens
+            for i in range(k):
+                num = num * 10 + 7
+            # add d-k zeros
+            for i in range(d - k):
+                num = num * 10
+            if num % n == 0:
+                return num
+
 
 
 
