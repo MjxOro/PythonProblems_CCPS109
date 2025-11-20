@@ -294,6 +294,32 @@ def can_balance(items):
 
     return -1
 
+def josephus(n, k):
+
+    # track who is still alive
+    alive = []
+    for i in range(n):
+        alive.append(True)
+
+    result = []
+    pos = 0
+    remaining = n
+
+    while remaining > 0:
+        # count k people that are still alive
+        count = 0
+        while count < k:
+            if alive[pos]:
+                count += 1
+                if count == k:
+                    # eliminate this person
+                    alive[pos] = False
+                    result.append(pos + 1)  # people numbered 1 to n
+                    remaining -= 1
+            pos = (pos + 1) % n
+
+    return result
+
 
 
 
