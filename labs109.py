@@ -432,6 +432,25 @@ def scylla_or_charybdis(moves, n):
 
     return bestK
 
+def tukeys_ninthers(items):
+
+    current = []
+    for item in items:
+        current.append(item)
+
+    while len(current) > 1:
+        temp = []
+        # process triplets
+        for i in range(0, len(current), 3):
+            triplet = [current[i], current[i+1], current[i+2]]
+            # sorted() is python method that sorts list
+            sortedTriplet = sorted(triplet)
+            median = sortedTriplet[1]
+            temp.append(median)
+        current = temp
+
+    return current[0]
+
 
 
 
