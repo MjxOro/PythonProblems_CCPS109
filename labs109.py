@@ -370,6 +370,37 @@ def count_growlers(animals):
 
     return growlers
 
+def bulgarian_solitaire(piles, k):
+
+    # steady state is [1, 2, 3, ..., k]
+    target = []
+    for i in range(1, k + 1):
+        target.append(i)
+
+    current = []
+    for pile in piles:
+        current.append(pile)
+
+    moves = 0
+
+    # simulate until steady state
+    while True:
+        # check if at steady state
+        sortedCurrent = sorted(current)
+        if sortedCurrent == target:
+            break
+
+        newPile = len(current)
+        newCurrent = []
+        for pile in current:
+            if pile - 1 > 0:
+                newCurrent.append(pile - 1)
+        newCurrent.append(newPile)
+        current = newCurrent
+        moves += 1
+
+    return moves
+
 
 
 
