@@ -401,6 +401,37 @@ def bulgarian_solitaire(piles, k):
 
     return moves
 
+def scylla_or_charybdis(moves, n):
+
+    bestK = None
+    minSteps = None
+
+    # try all possible k values
+    for k in range(1, len(moves) + 1):
+        pos = 0
+        steps = 0
+        i = k - 1
+
+        while i < len(moves):
+            if moves[i] == '+':
+                pos += 1
+            else:
+                pos -= 1
+            steps += 1
+
+            # check if fell off
+            if pos == n or pos == -n:
+                if minSteps == None or steps < minSteps:
+                    minSteps = steps
+                    bestK = k
+                elif steps == minSteps and k < bestK:
+                    bestK = k
+                break
+
+            i += k
+
+    return bestK
+
 
 
 
