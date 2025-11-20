@@ -215,6 +215,39 @@ def safe_squares_rooks(n, rooks):
     # safe area is rectangle
     return safeRows * safeCols
 
+def winning_card(cards, trump=None):
+
+    # rank order from highest to lowest
+    
+    ranks = ['ace', 'king', 'queen', 'jack', 'ten', 'nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two']
+
+    trumps = []
+    for card in cards:
+        if card[1] == trump:
+            trumps.append(card)
+
+    # if trump cards exist, return highest trump
+    if trumps:
+        winner = trumps[0]
+        for card in trumps:
+            if ranks.index(card[0]) < ranks.index(winner[0]):
+                winner = card
+        return winner
+
+    # no trump, find highest card of first suit
+    
+    firstSuit = cards[0][1]
+    suitCards = []
+    for card in cards:
+        if card[1] == firstSuit:
+            suitCards.append(card)
+
+    winner = suitCards[0]
+    for card in suitCards:
+        if ranks.index(card[0]) < ranks.index(winner[0]):
+            winner = card
+    return winner
+
 
 
 
