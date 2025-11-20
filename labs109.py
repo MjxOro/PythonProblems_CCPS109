@@ -296,27 +296,19 @@ def can_balance(items):
 
 def josephus(n, k):
 
-    # track who is still alive
-    alive = []
-    for i in range(n):
-        alive.append(True)
+    circle = []
+    for i in range(1, n + 1):
+        circle.append(i)
 
     result = []
     pos = 0
-    remaining = n
 
-    while remaining > 0:
-        # count k people that are still alive
-        count = 0
-        while count < k:
-            if alive[pos]:
-                count += 1
-                if count == k:
-                    # eliminate this person
-                    alive[pos] = False
-                    result.append(pos + 1)  # people numbered 1 to n
-                    remaining -= 1
-            pos = (pos + 1) % n
+    while circle:
+        # modulo handles large k values automatically
+        pos = (pos + k - 1) % len(circle)
+        result.append(circle.pop(pos))
+        if pos >= len(circle) and circle:
+            pos = 0
 
     return result
 
