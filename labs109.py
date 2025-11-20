@@ -178,6 +178,27 @@ def words_with_letters(words, letters):
 
     return result
 
+def taxi_zum_zum(moves):
+    # start at origin facing north
+    x = 0
+    y = 0
+    # directions: 0=north, 1=east, 2=south, 3=west
+    direction = 0
+    # direction vectors: north, east, south, west
+    dx = [0, 1, 0, -1]
+    dy = [1, 0, -1, 0]
+
+    for move in moves:
+        if move == 'L':
+            direction = (direction - 1) % 4
+        elif move == 'R':
+            direction = (direction + 1) % 4
+        elif move == 'F':
+            x += dx[direction]
+            y += dy[direction]
+
+    return (x, y)
+
 
 
 
