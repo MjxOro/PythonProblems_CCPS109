@@ -325,6 +325,14 @@ def group_and_skip(n, out, ins):
 
     return result
 
+def pyramid_blocks(n, m, h):
+
+    # loops too slow for large h, use expansion formula
+    # sum of (n+i)(m+i) for i=0 to h-1
+    # expands to: h*n*m + (n+m)*h*(h-1)/2 + h*(h-1)*(2*h-1)/6
+    total = n * m * h + (n + m) * h * (h - 1) // 2 + h * (h - 1) * (2 * h - 1) // 6
+    return total
+
 
 
 
