@@ -199,6 +199,22 @@ def taxi_zum_zum(moves):
 
     return (x, y)
 
+def safe_squares_rooks(n, rooks):
+    # set() is a python function that stores unique values only
+    rows = set()
+    cols = set()
+
+    for rook in rooks:
+        rows.add(rook[0])
+        cols.add(rook[1])
+
+    # count safe rows and columns
+    safeRows = n - len(rows)
+    safeCols = n - len(cols)
+
+    # safe area is rectangle
+    return safeRows * safeCols
+
 
 
 
