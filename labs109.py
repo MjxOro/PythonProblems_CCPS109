@@ -272,6 +272,28 @@ def seven_zero(n):
             if num % n == 0:
                 return num
 
+def can_balance(items):
+
+    # try each position as fulcrum
+    for fulcrum in range(len(items)):
+        left = 0
+        right = 0
+
+        # calculate left torque
+        for i in range(fulcrum):
+            distance = fulcrum - i
+            left += items[i] * distance
+
+        # calculate right torque
+        for i in range(fulcrum + 1, len(items)):
+            distance = i - fulcrum
+            right += items[i] * distance
+
+        if left == right:
+            return fulcrum
+
+    return -1
+
 
 
 
