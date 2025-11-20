@@ -320,6 +320,19 @@ def josephus(n, k):
 
     return result
 
+def group_and_skip(n, out, ins):
+
+    # works when out and ins share no common factors (gcd == 1)
+    result = []
+
+    while n > 0:
+        leftover = n % out
+        result.append(leftover)
+        groups = n // out
+        n = groups * ins
+
+    return result
+
 
 
 
