@@ -333,6 +333,43 @@ def pyramid_blocks(n, m, h):
     total = n * m * h + (n + m) * h * (h - 1) // 2 + h * (h - 1) * (2 * h - 1) // 6
     return total
 
+def count_growlers(animals):
+
+    # count total dogs and cats
+    totalDogs = 0
+    totalCats = 0
+    for animal in animals:
+        if animal == 'dog' or animal == 'god':
+            totalDogs += 1
+        else:
+            totalCats += 1
+
+    growlers = 0
+    leftDogs = 0
+    leftCats = 0
+
+    for animal in animals:
+        if animal == 'cat' or animal == 'dog':
+            # facing left
+            if leftDogs > leftCats:
+                growlers += 1
+        else:
+            rightDogs = totalDogs - leftDogs
+            rightCats = totalCats - leftCats
+            if animal == 'god':
+                rightDogs -= 1
+            else:
+                rightCats -= 1
+            if rightDogs > rightCats:
+                growlers += 1
+
+        if animal == 'dog' or animal == 'god':
+            leftDogs += 1
+        else:
+            leftCats += 1
+
+    return growlers
+
 
 
 
