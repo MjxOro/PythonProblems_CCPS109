@@ -470,6 +470,48 @@ def collect_numbers(perm):
 
     return rounds
 
+def crag_score(dice):
+
+    # crag game: best score wins - crag is 50pts, thirteen is 26pts,
+    # three of a kind is 25pts, straights are 20pts, else count matching pips
+
+    d = sorted(dice)
+
+    # check crag - pair + single = 13
+    if d[0] == d[1] and d[0] * 2 + d[2] == 13:
+        return 50
+    if d[1] == d[2] and d[1] * 2 + d[0] == 13:
+        return 50
+
+    # thirteen
+    if sum(d) == 13:
+        return 26
+
+    # three of kind
+    if d[0] == d[1] == d[2]:
+        return 25
+
+    # straights - all worth 20
+    if d == [1, 2, 3]:
+        return 20
+    if d == [4, 5, 6]:
+        return 20
+    if d == [2, 4, 6]:
+        return 20
+    if d == [1, 3, 5]:
+        return 20
+
+    best = 0
+    for pip in range(1, 7):
+        s = 0
+        for die in dice:
+            if die == pip:
+                s += pip
+        if s > best:
+            best = s
+
+    return best
+
 
 
 
