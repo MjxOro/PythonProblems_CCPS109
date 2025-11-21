@@ -512,6 +512,29 @@ def crag_score(dice):
 
     return best
 
+def three_summers(items, goal):
+
+    # use two pointer technique for pairs after picking first element
+
+    for i in range(len(items)):
+        x = items[i]
+        target = goal - x
+
+        # two pointers to find pair that sums to target
+        left = i + 1
+        right = len(items) - 1
+
+        while left < right:
+            currentSum = items[left] + items[right]
+            if currentSum == target:
+                return True
+            elif currentSum < target:
+                left += 1
+            else:
+                right -= 1
+
+    return False
+
 
 
 
