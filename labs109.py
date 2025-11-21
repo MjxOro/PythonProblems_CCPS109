@@ -535,6 +535,23 @@ def three_summers(items, goal):
 
     return False
 
+def sum_of_two_squares(n):
+
+    # two pointer technique - start from ends and move inward
+    left = 1
+    right = int(n**0.5)
+
+    while left <= right:
+        total = left * left + right * right
+        if total == n:
+            return (right, left)
+        elif total < n:
+            left += 1
+        else:
+            right -= 1
+
+    return None
+
 
 
 
