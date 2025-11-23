@@ -754,6 +754,30 @@ def word_positions(sentence, word):
 
     return positions
 
+def power_prefix(prefix):
+
+    k = 1
+    found = False
+
+    while not found:
+        power = str(2 ** k)
+
+        # check if power starts with prefix
+        if len(power) >= len(prefix):
+            match = True
+            for i in range(len(prefix)):
+                if prefix[i] != '*' and prefix[i] != power[i]:
+                    match = False
+                    break
+
+            if match:
+                found = True
+
+        if not found:
+            k += 1
+
+    return k
+
 
 
 
