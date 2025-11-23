@@ -599,6 +599,48 @@ def duplicate_digit_bonus(n):
 
     return total
 
+def nearest_smaller(items):
+
+    result = []
+
+    for i in range(len(items)):
+        current = items[i]
+        leftSmaller = None
+        rightSmaller = None
+        leftDist = None
+        rightDist = None
+
+        # search left
+        for d in range(1, i + 1):
+            if items[i - d] < current:
+                leftSmaller = items[i - d]
+                leftDist = d
+                break
+
+        # search right
+        for d in range(1, len(items) - i):
+            if items[i + d] < current:
+                rightSmaller = items[i + d]
+                rightDist = d
+                break
+
+        # pick nearest
+        if leftSmaller is None and rightSmaller is None:
+            result.append(current)
+        elif leftSmaller is None:
+            result.append(rightSmaller)
+        elif rightSmaller is None:
+            result.append(leftSmaller)
+        elif leftDist < rightDist:
+            result.append(leftSmaller)
+        elif rightDist < leftDist:
+            result.append(rightSmaller)
+        else:
+            # tied, pick smaller
+            result.append(min(leftSmaller, rightSmaller))
+
+    return result
+
 
 
 
