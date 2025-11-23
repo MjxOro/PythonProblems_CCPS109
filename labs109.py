@@ -666,6 +666,25 @@ def is_chess_960(row):
 
     return True
 
+def multiplicative_persistence(n, ignore_zeros=False):
+
+    count = 0
+
+    while n >= 10:
+        product = 1
+        temp = n
+
+        while temp > 0:
+            digit = temp % 10
+            if not ignore_zeros or digit != 0:
+                product *= digit
+            temp //= 10
+
+        n = product
+        count += 1
+
+    return count
+
 
 
 
