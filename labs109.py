@@ -743,6 +743,17 @@ def count_cigarettes(n, k):
 
     return total
 
+def word_positions(sentence, word):
+
+    words = sentence.split()
+    positions = []
+
+    for i in range(len(words)):
+        if words[i] == word:
+            positions.append(i)
+
+    return positions
+
 
 
 
