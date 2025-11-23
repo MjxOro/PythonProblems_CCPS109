@@ -731,6 +731,18 @@ def tr(text, ch_from, ch_to):
 
     return result
 
+def count_cigarettes(n, k):
+
+    total = n
+    butts = n
+
+    while butts >= k:
+        newCigs = butts // k
+        total += newCigs
+        butts = butts % k + newCigs
+
+    return total
+
 
 
 
