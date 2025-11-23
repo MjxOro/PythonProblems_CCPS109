@@ -552,6 +552,28 @@ def sum_of_two_squares(n):
 
     return None
 
+def count_carries(a, b):
+
+    # count carries during column addition
+    carry = 0
+    count = 0
+
+    while a > 0 or b > 0 or carry > 0:
+        digitA = a % 10
+        digitB = b % 10
+        total = digitA + digitB + carry
+
+        if total >= 10:
+            count += 1
+            carry = 1
+        else:
+            carry = 0
+
+        a = a // 10
+        b = b // 10
+
+    return count
+
 
 
 
