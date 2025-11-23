@@ -574,6 +574,31 @@ def count_carries(a, b):
 
     return count
 
+def duplicate_digit_bonus(n):
+
+    # find blocks of repeated digits and score them
+    s = str(n)
+    total = 0
+    i = 0
+
+    while i < len(s):
+        # count consecutive same digits
+        j = i
+        while j < len(s) and s[j] == s[i]:
+            j += 1
+
+        blockLen = j - i
+        if blockLen >= 2:
+            score = 10 ** (blockLen - 2)
+            # double if at lowest end (rightmost)
+            if j == len(s):
+                score *= 2
+            total += score
+
+        i = j
+
+    return total
+
 
 
 
