@@ -685,6 +685,28 @@ def multiplicative_persistence(n, ignore_zeros=False):
 
     return count
 
+def lowest_common_dominator(beta, gamma):
+
+    # compute prefix sums
+    prefixBeta = []
+    sum = 0
+    for x in beta:
+        sum += x
+        prefixBeta.append(sum)
+
+    prefixGamma = []
+    sum = 0
+    for x in gamma:
+        sum += x
+        prefixGamma.append(sum)
+
+    # take max at each position
+    result = []
+    for i in range(len(beta)):
+        result.append(max(prefixBeta[i], prefixGamma[i]))
+
+    return result
+
 
 
 
