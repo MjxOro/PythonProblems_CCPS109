@@ -707,6 +707,17 @@ def lowest_common_dominator(beta, gamma):
 
     return result
 
+def discrete_rounding(n):
+
+    current = n
+
+    for k in range(n - 1, 1, -1):
+        # round up to next multiple of k
+        if current % k != 0:
+            current = ((current // k) + 1) * k
+
+    return current
+
 
 
 
