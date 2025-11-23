@@ -641,6 +641,31 @@ def nearest_smaller(items):
 
     return result
 
+def is_chess_960(row):
+
+    # find bishop positions
+    bishopPos = []
+    for i in range(len(row)):
+        if row[i] == 'b':
+            bishopPos.append(i)
+
+    # check bishops on opposite parity
+    if bishopPos[0] % 2 == bishopPos[1] % 2:
+        return False
+
+    # find king and rook positions
+    kingPos = row.index('K')
+    rookPos = []
+    for i in range(len(row)):
+        if row[i] == 'r':
+            rookPos.append(i)
+
+    # check king between rooks
+    if not (min(rookPos) < kingPos < max(rookPos)):
+        return False
+
+    return True
+
 
 
 
