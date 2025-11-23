@@ -778,6 +778,18 @@ def power_prefix(prefix):
 
     return k
 
+def dfa(rules, text):
+
+    state = 0
+
+    for char in text:
+        # look up next state using current state and character
+        key = (state, char)
+        nextState = rules[key]
+        state = nextState
+
+    return state
+
 
 
 
