@@ -718,6 +718,19 @@ def discrete_rounding(n):
 
     return current
 
+def tr(text, ch_from, ch_to):
+
+    result = ''
+
+    for char in text:
+        if char in ch_from:
+            idx = ch_from.index(char)
+            result += ch_to[idx]
+        else:
+            result += char
+
+    return result
+
 
 
 
