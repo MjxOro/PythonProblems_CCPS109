@@ -814,6 +814,27 @@ def parking_lot_permutation(preferred_spot):
 
     return result
 
+def lychrel(n, giveup):
+
+    # check if already palindrome
+    s = str(n)
+    if s == s[::-1]:
+        return 0
+
+    count = 0
+
+    for i in range(giveup):
+        reversed_n = int(str(n)[::-1])
+        n = n + reversed_n
+        count += 1
+
+        # check palindrome
+        s = str(n)
+        if s == s[::-1]:
+            return count
+
+    return None
+
 
 
 
