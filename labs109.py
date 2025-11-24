@@ -1,3 +1,5 @@
+from fractions import Fraction
+
 def is_ascending(items):
     #Check empty lists
     if not items:
@@ -1006,6 +1008,87 @@ def accumulating_merge(items1, items2):
                     current = 0
 
     return result
+
+
+def ryerson_letter_grade(pct):
+    if pct >= 90:
+        return 'A+'
+    elif pct >= 85:
+        return 'A'
+    elif pct >= 80:
+        return 'A-'
+    elif pct >= 77:
+        return 'B+'
+    elif pct >= 73:
+        return 'B'
+    elif pct >= 70:
+        return 'B-'
+    elif pct >= 67:
+        return 'C+'
+    elif pct >= 63:
+        return 'C'
+    elif pct >= 60:
+        return 'C-'
+    elif pct >= 57:
+        return 'D+'
+    elif pct >= 53:
+        return 'D'
+    elif pct >= 50:
+        return 'D-'
+    else:
+        return 'F'
+
+
+def knight_jump(knight, start, end):
+    diffs = []
+    for i in range(len(start)):
+        diff = abs(start[i] - end[i])
+        diffs.append(diff)
+
+    sortedDiffs = sorted(diffs)
+    sortedKnight = sorted(knight)
+
+    if sortedDiffs == sortedKnight:
+        return True
+    else:
+        return False
+
+
+def tog_comparison(first, second):
+    i = 0
+    j = 0
+
+    while i < len(first) and j < len(second):
+        if first[i].isdigit() and second[j].isdigit():
+            # extract numbers
+            num1 = 0
+            while i < len(first) and first[i].isdigit():
+                num1 = num1 * 10 + int(first[i])
+                i += 1
+
+            num2 = 0
+            while j < len(second) and second[j].isdigit():
+                num2 = num2 * 10 + int(second[j])
+                j += 1
+
+            if num1 < num2:
+                return -1
+            elif num1 > num2:
+                return 1
+        else:
+            if first[i] < second[j]:
+                return -1
+            elif first[i] > second[j]:
+                return 1
+            i += 1
+            j += 1
+
+    if i < len(first):
+        return 1
+    elif j < len(second):
+        return -1
+    else:
+        return 0
 
 
 
