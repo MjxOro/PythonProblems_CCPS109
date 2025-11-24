@@ -856,6 +856,24 @@ def powertrain(n):
 
     return count
 
+def first_fit_bin_packing(items, capacity):
+
+    bins = []
+
+    for item in items:
+        placed = False
+
+        for i in range(len(bins)):
+            if bins[i] + item <= capacity:
+                bins[i] += item
+                placed = True
+                break
+
+        if not placed:
+            bins.append(item)
+
+    return bins
+
 
 
 
