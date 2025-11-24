@@ -874,6 +874,22 @@ def first_fit_bin_packing(items, capacity):
 
     return bins
 
+def count_triangles(sides):
+
+    sides = sorted(sides)
+    count = 0
+
+    for i in range(len(sides)):
+        for j in range(i + 1, len(sides)):
+            for k in range(j + 1, len(sides)):
+                # since sorted: sides[i] <= sides[j] <= sides[k]
+                if sides[i] + sides[j] > sides[k]:
+                    count += 1
+                else:
+                    break
+
+    return count
+
 
 
 
