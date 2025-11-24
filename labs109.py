@@ -835,6 +835,27 @@ def lychrel(n, giveup):
 
     return None
 
+def powertrain(n):
+
+    count = 0
+
+    while n >= 10:
+        s = str(n)
+        product = 1
+
+        for i in range(0, len(s), 2):
+            base = int(s[i])
+            if i + 1 < len(s):
+                exp = int(s[i + 1])
+            else:
+                exp = 0
+            product *= base ** exp
+
+        n = product
+        count += 1
+
+    return count
+
 
 
 
