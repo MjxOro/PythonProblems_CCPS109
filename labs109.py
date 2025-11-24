@@ -950,6 +950,28 @@ def nfa(rules, text):
     return result
 
 
+def square_lamps(n, flips):
+    rowFlips = [0] * (n + 1)
+    colFlips = [0] * (n + 1)
+    for flip in flips:
+        if flip > 0:
+            rowFlips[flip] += 1
+        else:
+            colFlips[-flip] += 1
+    oddRows = 0
+    for i in range(1, n + 1):
+        if rowFlips[i] % 2 == 1:
+            oddRows += 1
+    oddCols = 0
+    for i in range(1, n + 1):
+        if colFlips[i] % 2 == 1:
+            oddCols += 1
+    evenRows = n - oddRows
+    evenCols = n - oddCols
+    ans = oddRows * evenCols + evenRows * oddCols
+    return ans
+
+
 
 
 
