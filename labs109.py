@@ -972,6 +972,42 @@ def square_lamps(n, flips):
     return ans
 
 
+def accumulating_merge(items1, items2):
+    result = []
+    pos1 = 0
+    pos2 = 0
+    sum1 = 0
+    sum2 = 0
+    current = 0  # 0 means items1, 1 means items2
+
+    while pos1 < len(items1) or pos2 < len(items2):
+        if current == 0 and pos1 >= len(items1):
+            current = 1
+        elif current == 1 and pos2 >= len(items2):
+            current = 0
+
+        if current == 0:
+            val = items1[pos1]
+            result.append(val)
+            sum1 += val
+            pos1 += 1
+
+            if pos1 >= len(items1) or (sum1 > sum2 and pos2 < len(items2)):
+                if pos2 < len(items2):
+                    current = 1
+        else:
+            val = items2[pos2]
+            result.append(val)
+            sum2 += val
+            pos2 += 1
+
+            if pos2 >= len(items2) or (sum2 > sum1 and pos1 < len(items1)):
+                if pos1 < len(items1):
+                    current = 0
+
+    return result
+
+
 
 
 
