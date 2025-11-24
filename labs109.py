@@ -1,4 +1,5 @@
-from fractions import Fraction
+# CCPS 109 Lab Questions.
+# Matthew Oro 
 
 def is_ascending(items):
     #Check empty lists
