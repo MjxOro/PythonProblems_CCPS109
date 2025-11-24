@@ -909,6 +909,46 @@ def arrow_walk(board, position):
 
     return steps
 
+def median_filter(items, k):
+
+    result = []
+
+    for i in range(len(items)):
+        window = []
+
+        # build window of k items
+        for j in range(k):
+            idx = i - (k - 1) + j
+            if idx < 0:
+                window.append(items[0])
+            else:
+                window.append(items[idx])
+
+        sortedWindow = sorted(window)
+        median = sortedWindow[k // 2]
+        result.append(median)
+
+    return result
+
+def nfa(rules, text):
+
+    states = set()
+    states.add(0)
+
+    for char in text:
+        nextStates = set()
+
+        # collect all possible next states
+        for state in states:
+            possibleStates = rules[(state, char)]
+            for s in possibleStates:
+                nextStates.add(s)
+
+        states = nextStates
+
+    result = sorted(list(states))
+    return result
+
 
 
 
