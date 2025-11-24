@@ -890,6 +890,25 @@ def count_triangles(sides):
 
     return count
 
+def arrow_walk(board, position):
+
+    board = list(board)
+    steps = 0
+
+    while 0 <= position < len(board):
+        direction = board[position]
+
+        if direction == '<':
+            board[position] = '>'
+            position -= 1
+        else:
+            board[position] = '<'
+            position += 1
+
+        steps += 1
+
+    return steps
+
 
 
 
