@@ -790,6 +790,30 @@ def dfa(rules, text):
 
     return state
 
+def parking_lot_permutation(preferred_spot):
+
+    n = len(preferred_spot)
+    taken = []
+    for i in range(n):
+        taken.append(False)
+
+    result = []
+    for i in range(n):
+        result.append(-1)
+
+    for car in range(n):
+        spot = preferred_spot[car]
+
+        # find next available spot
+        while taken[spot]:
+            spot = (spot + 1) % n
+
+        # park the car
+        taken[spot] = True
+        result[spot] = car
+
+    return result
+
 
 
 
